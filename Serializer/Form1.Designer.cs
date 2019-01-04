@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,8 +51,10 @@
             this.bunifuThinButton25 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.homeUserStatistic = new LiveCharts.WinForms.CartesianChart();
             this.pieChart1 = new LiveCharts.WinForms.PieChart();
-            this.dataAnalyze = new LiveCharts.WinForms.CartesianChart();
             this.bankPanel = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.categories = new LiveCharts.WinForms.PieChart();
             this.buyersPrediction = new LiveCharts.WinForms.CartesianChart();
             this.userStatistic = new LiveCharts.WinForms.CartesianChart();
@@ -58,14 +62,20 @@
             this.bunifuThinButton23 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.doubleBitmapControl1 = new BunifuAnimatorNS.DoubleBitmapControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.dataAnalyze = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Filter = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.bunifuThinButton27 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.panel1.SuspendLayout();
             this.bunifuGradientPanel1.SuspendLayout();
             this.homePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.userPanel.SuspendLayout();
             this.bankPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAnalyze)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -222,9 +232,9 @@
             this.homePanel.Controls.Add(this.textColor);
             this.homePanel.Controls.Add(this.text);
             this.homePanel.Controls.Add(this.pictureBox2);
-            this.homePanel.Location = new System.Drawing.Point(522, 0);
+            this.homePanel.Location = new System.Drawing.Point(232, 0);
             this.homePanel.Name = "homePanel";
-            this.homePanel.Size = new System.Drawing.Size(728, 591);
+            this.homePanel.Size = new System.Drawing.Size(1018, 591);
             this.homePanel.TabIndex = 1;
             // 
             // textColor
@@ -360,54 +370,78 @@
             this.pieChart1.TabIndex = 10;
             this.pieChart1.Text = "pieChart1";
             // 
-            // dataAnalyze
-            // 
-            this.dataAnalyze.Location = new System.Drawing.Point(166, 193);
-            this.dataAnalyze.Name = "dataAnalyze";
-            this.dataAnalyze.Size = new System.Drawing.Size(725, 309);
-            this.dataAnalyze.TabIndex = 3;
-            this.dataAnalyze.Text = "cartesianChart1";
-            // 
             // bankPanel
             // 
             this.bankPanel.CausesValidation = false;
-            this.bankPanel.Controls.Add(this.categories);
-            this.bankPanel.Controls.Add(this.buyersPrediction);
-            this.bankPanel.Controls.Add(this.userStatistic);
+            this.bankPanel.Controls.Add(this.panel2);
+            this.bankPanel.Controls.Add(this.dataAnalyze);
+            this.bankPanel.Controls.Add(this.comboBox1);
+            this.bankPanel.Controls.Add(this.label2);
+            this.bankPanel.Controls.Add(this.textBox2);
             this.bankPanel.Controls.Add(this.bunifuThinButton24);
             this.bankPanel.Controls.Add(this.bunifuThinButton23);
             this.bankPanel.Controls.Add(this.bunifuThinButton22);
-            this.bankPanel.Controls.Add(this.dataAnalyze);
             this.bankPanel.Controls.Add(this.bunifuThinButton21);
-            this.bankPanel.Controls.Add(this.doubleBitmapControl1);
+            this.bankPanel.Controls.Add(this.categories);
+            this.bankPanel.Controls.Add(this.buyersPrediction);
+            this.bankPanel.Controls.Add(this.userStatistic);
             this.bankPanel.Location = new System.Drawing.Point(232, 0);
             this.bankPanel.Name = "bankPanel";
             this.bankPanel.Size = new System.Drawing.Size(1055, 591);
             this.bankPanel.TabIndex = 0;
             this.bankPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.bankPanel_Paint);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(710, 127);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(181, 21);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(331, 134);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "User ID";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(395, 127);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(287, 20);
+            this.textBox2.TabIndex = 16;
+            this.textBox2.WordWrap = false;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
             // categories
             // 
             this.categories.BackColor = System.Drawing.Color.Transparent;
-            this.categories.Location = new System.Drawing.Point(63, 136);
+            this.categories.Location = new System.Drawing.Point(63, 160);
             this.categories.Name = "categories";
-            this.categories.Size = new System.Drawing.Size(898, 436);
+            this.categories.Size = new System.Drawing.Size(898, 412);
             this.categories.TabIndex = 11;
             this.categories.Text = "pieChart1";
             // 
             // buyersPrediction
             // 
-            this.buyersPrediction.Location = new System.Drawing.Point(38, 136);
+            this.buyersPrediction.Location = new System.Drawing.Point(38, 160);
             this.buyersPrediction.Name = "buyersPrediction";
-            this.buyersPrediction.Size = new System.Drawing.Size(923, 443);
+            this.buyersPrediction.Size = new System.Drawing.Size(923, 419);
             this.buyersPrediction.TabIndex = 10;
             this.buyersPrediction.Text = "cartesianChart2";
             // 
             // userStatistic
             // 
-            this.userStatistic.Location = new System.Drawing.Point(166, 203);
+            this.userStatistic.Location = new System.Drawing.Point(38, 160);
             this.userStatistic.Name = "userStatistic";
-            this.userStatistic.Size = new System.Drawing.Size(725, 309);
+            this.userStatistic.Size = new System.Drawing.Size(923, 437);
             this.userStatistic.TabIndex = 9;
             this.userStatistic.Text = "cartesianChart2";
             // 
@@ -515,28 +549,103 @@
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
             // 
-            // doubleBitmapControl1
-            // 
-            this.doubleBitmapControl1.Location = new System.Drawing.Point(595, 489);
-            this.doubleBitmapControl1.Name = "doubleBitmapControl1";
-            this.doubleBitmapControl1.Size = new System.Drawing.Size(75, 23);
-            this.doubleBitmapControl1.TabIndex = 4;
-            this.doubleBitmapControl1.Text = "doubleBitmapControl1";
-            this.doubleBitmapControl1.Visible = false;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // dataAnalyze
+            // 
+            this.dataAnalyze.AllowUserToAddRows = false;
+            this.dataAnalyze.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataAnalyze.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataAnalyze.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataAnalyze.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataAnalyze.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(167)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(167)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataAnalyze.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataAnalyze.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataAnalyze.DoubleBuffered = true;
+            this.dataAnalyze.GridColor = System.Drawing.SystemColors.Control;
+            this.dataAnalyze.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(167)))));
+            this.dataAnalyze.HeaderForeColor = System.Drawing.SystemColors.Control;
+            this.dataAnalyze.Location = new System.Drawing.Point(38, 160);
+            this.dataAnalyze.Name = "dataAnalyze";
+            this.dataAnalyze.ReadOnly = true;
+            this.dataAnalyze.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataAnalyze.RowHeadersVisible = false;
+            this.dataAnalyze.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(167)))));
+            this.dataAnalyze.Size = new System.Drawing.Size(680, 419);
+            this.dataAnalyze.TabIndex = 19;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.bunifuThinButton27);
+            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Controls.Add(this.Filter);
+            this.panel2.Location = new System.Drawing.Point(734, 160);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(255, 419);
+            this.panel2.TabIndex = 20;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // Filter
+            // 
+            this.Filter.AutoSize = true;
+            this.Filter.Location = new System.Drawing.Point(111, 21);
+            this.Filter.Name = "Filter";
+            this.Filter.Size = new System.Drawing.Size(29, 13);
+            this.Filter.TabIndex = 0;
+            this.Filter.Text = "Filter";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(27, 43);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(209, 20);
+            this.textBox3.TabIndex = 1;
+            // 
+            // bunifuThinButton27
+            // 
+            this.bunifuThinButton27.ActiveBorderThickness = 1;
+            this.bunifuThinButton27.ActiveCornerRadius = 10;
+            this.bunifuThinButton27.ActiveFillColor = System.Drawing.Color.Tomato;
+            this.bunifuThinButton27.ActiveForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton27.ActiveLineColor = System.Drawing.Color.Tomato;
+            this.bunifuThinButton27.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuThinButton27.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton27.BackgroundImage")));
+            this.bunifuThinButton27.ButtonText = "Find";
+            this.bunifuThinButton27.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuThinButton27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuThinButton27.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuThinButton27.IdleBorderThickness = 1;
+            this.bunifuThinButton27.IdleCornerRadius = 20;
+            this.bunifuThinButton27.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(58)))), ((int)(((byte)(167)))));
+            this.bunifuThinButton27.IdleForecolor = System.Drawing.Color.White;
+            this.bunifuThinButton27.IdleLineColor = System.Drawing.Color.Transparent;
+            this.bunifuThinButton27.Location = new System.Drawing.Point(45, 71);
+            this.bunifuThinButton27.Margin = new System.Windows.Forms.Padding(5);
+            this.bunifuThinButton27.Name = "bunifuThinButton27";
+            this.bunifuThinButton27.Size = new System.Drawing.Size(168, 41);
+            this.bunifuThinButton27.TabIndex = 6;
+            this.bunifuThinButton27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuThinButton27.Click += new System.EventHandler(this.bunifuThinButton27_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1254, 591);
-            this.Controls.Add(this.bankPanel);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.bankPanel);
             this.Controls.Add(this.homePanel);
             this.Controls.Add(this.userPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -551,6 +660,10 @@
             this.userPanel.ResumeLayout(false);
             this.userPanel.PerformLayout();
             this.bankPanel.ResumeLayout(false);
+            this.bankPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataAnalyze)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -568,8 +681,6 @@
         private System.Windows.Forms.Panel homePanel;
         private System.Windows.Forms.Panel userPanel;
         private System.Windows.Forms.Panel bankPanel;
-        private LiveCharts.WinForms.CartesianChart dataAnalyze;
-        private BunifuAnimatorNS.DoubleBitmapControl doubleBitmapControl1;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton24;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton23;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton22;
@@ -587,6 +698,14 @@
         private System.Windows.Forms.TextBox textBox1;
         private LiveCharts.WinForms.CartesianChart homeUserStatistic;
         private System.Windows.Forms.Label textColor;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid dataAnalyze;
+        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton27;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label Filter;
     }
 }
 
