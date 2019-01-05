@@ -92,3 +92,6 @@ C:\Users\dekol\Serializer\Serializer\obj\Debug\Serializer.csproj.CoreCompileInpu
 C:\Users\dekol\Serializer\Serializer\obj\Debug\Serializer.csproj.CopyComplete
 C:\Users\dekol\Serializer\Serializer\obj\Debug\Serializer.exe
 C:\Users\dekol\Serializer\Serializer\obj\Debug\Serializer.pdb
+D:\Serializer\Serializer\bin\Debug\Newtonsoft.Json.dll
+D:\Serializer\Serializer\bin\Debug\Newtonsoft.Json.pdb
+D:\Serializer\Serializer\bin\Debug\Newtonsoft.Json.xml
