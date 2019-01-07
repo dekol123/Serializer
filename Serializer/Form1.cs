@@ -100,7 +100,9 @@ namespace Serializer
             homePanel.Visible = false;
             userPanel.Visible = false;
             bankPanel.Visible = true;
+            panel2.Visible = true;
             dataAnalyze.Visible = true;
+            bunifuCustomDataGrid1.Visible = false;
             IEnumerable<Rootobject> mas1 = getAllInfo();
             dataAnalyze.DataSource = mas1;
         }
@@ -125,10 +127,11 @@ namespace Serializer
         private void bunifuThinButton23_Click(object sender, EventArgs e)
         {
             userStatistic.Series.Clear();
-
+            bunifuCustomDataGrid1.Visible = false;
             label2.Visible = false;
             textBox2.Visible = false;
             comboBox1.Visible = false;
+            panel2.Visible = false;
 
             bunifuThinButton23.IdleCornerRadius = 10;
             bunifuThinButton23.IdleForecolor = Color.White;
@@ -205,10 +208,17 @@ namespace Serializer
             return mas1;
         }
 
-        public IEnumerable<Rootobject> getFilteredInfo(string textToFilter)
+        public void getFilteredInfo(string textToFilter)
         {
             IEnumerable<Rootobject> mas1 = jsonResult;
-            foreach (var m in mas1)
+            float ress;
+            float.TryParse(textToFilter, out ress);
+            DateTime dt;
+            DateTime.TryParse(textToFilter, out dt);
+            List<Rootobject> list = new List<Rootobject>();
+            list = mas1.Where(x => (x.BankId == textToFilter || x.CardId == textToFilter || x.UserId == textToFilter || x.Date == dt || x.Currency == textToFilter || x.Id == textToFilter || x.Amount == ress || x.Type == textToFilter)).ToList();
+
+            foreach (var m in list)
             {
                 if (m.ExtraInfo.CategoryValues == null || m.ExtraInfo.CategoryValues.Count() == 0)
                     continue;
@@ -233,8 +243,8 @@ namespace Serializer
                     m.ExtraInfo.CategoryValues.FirstOrDefault().Type = "Bank";
                 }
             }
-            mas1 = jsonResult.Where(r => r.BankId == textToFilter);
-            return mas1;
+            bunifuCustomDataGrid1.Visible = true;
+            bunifuCustomDataGrid1.DataSource = list;
         }
 
         private void bunifuThinButton22_Click(object sender, EventArgs e)
@@ -242,6 +252,7 @@ namespace Serializer
             label2.Visible = true;
             textBox2.Visible = true;
             comboBox1.Visible = true;
+            panel2.Visible = false;
 
             bunifuThinButton22.IdleCornerRadius = 10;
             bunifuThinButton22.IdleForecolor = Color.White;
@@ -266,6 +277,7 @@ namespace Serializer
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
+            panel2.Visible = true;
             label2.Visible = false;
             textBox2.Visible = false;
             comboBox1.Visible = false;
@@ -282,6 +294,8 @@ namespace Serializer
             label2.Visible = false;
             textBox2.Visible = false;
             comboBox1.Visible = false;
+            panel2.Visible = false;
+            bunifuCustomDataGrid1.Visible = false;
             bunifuThinButton24.IdleCornerRadius = 10;
             bunifuThinButton24.IdleForecolor = Color.White;
             bunifuThinButton24.IdleFillColor = Color.Tomato;
@@ -593,8 +607,67 @@ namespace Serializer
         private void bunifuThinButton27_Click(object sender, EventArgs e)
         {
             string textToFilter = textBox3.Text;
-            IEnumerable<Rootobject> mas1 = getFilteredInfo(textToFilter);
-            dataAnalyze.DataSource = mas1;
+            getFilteredInfo(textToFilter);
+            dataAnalyze.Visible = false;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton27_Click_1(object sender, EventArgs e)
+        {
+            string textToFilter = textBox3.Text;
+            getFilteredInfo(textToFilter);
+            dataAnalyze.Visible = false;
+        }
+
+        private void bunifuThinButton28_Click(object sender, EventArgs e)
+        {
+            bunifuCustomDataGrid1.Visible = false;
+            dataAnalyze.Visible = true;
+            textBox3.Text = null;
+        }
+
+        private void bunifuGradientPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuFlatButton4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 
